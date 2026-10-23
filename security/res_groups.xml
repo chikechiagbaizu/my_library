@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Library Category -->
+    <record id="module_category_library" model="ir.module.category">
+        <field name="name">My Library</field>
+        <field name="description">My Library Category</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- Library Privilege -->
+    <record id="group_privilege_library" model="res.groups.privilege">
+        <field name="name">My Library</field>
+        <field name="description">My Library Privilege</field>
+        <field name="category_id" ref="my_library.module_category_library" />
+    </record>
+
+    <!-- User Group -->
+    <record id="group_library_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="my_library.group_privilege_library" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <field name="user_ids" eval="[(4, ref('__export__.res_users_5_5c7211b8'))]" />
+    </record>
+
+    <!-- Librarian Group -->
+    <record id="group_librarians" model="res.groups">
+        <field name="name">Librarians</field>
+        <field name="privilege_id" ref="my_library.group_privilege_library" />
+        <field name="implied_ids" eval="[(4, ref('group_library_user'))]" />
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]" />
+    </record>
+</odoo>

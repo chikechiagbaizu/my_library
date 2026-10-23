@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Form View -->
+    <record id="library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="author_ids" />
+                        </group>
+                        <group>
+                            <field name="date_released" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="library_book_list" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="date_released" />
+                <field name="author_ids" widget="many2many_tags" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="library_book_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="author_ids" />
+                <filter string="No Authors" name="without_author"
+                    domain="[('author_ids','=',False)]" />
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <menuitem id="libary_root_menu" name="My Library" sequence="1"
+        web_icon="my_library,static/description/icon.png" />
+    <menuitem id="libary_book_menu" name="Books" sequence="10" parent="libary_root_menu"
+        action="my_library.library_view_action" />
+</odoo>
