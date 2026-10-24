@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-    <record id="library_view_action" model="ir.actions.act_window">
+    <record id="library_book_action" model="ir.actions.act_window">
         <field name="name">Library Books</field>
         <field name="res_model">library.book</field>
         <field name="view_mode">list,form</field>

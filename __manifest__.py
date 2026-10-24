@@ -16,7 +16,9 @@
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         'views/library_book_views.xml',
+        'views/library_book_category_view.xml',
         'views/library_book_action.xml',
+        'views/library_book_category_action.xml',
         'views/library_menus.xml',
     ],
 }

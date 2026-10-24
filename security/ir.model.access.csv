@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_library_book_librarian,library.book,model_library_book,my_library.group_librarians,1,1,1,1
 access_library_book_user,library.book,model_library_book,my_library.group_library_user,1,0,0,0
+access_library_book_category_librarian,library.book.category,model_library_book_category,my_library.group_librarians,1,1,1,1
+access_library_book_category_user,library.book.category,model_library_book_category,my_library.group_library_user,1,0,0,0
