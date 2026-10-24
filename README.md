@@ -216,19 +216,6 @@ Changes encountered while porting cookbook code. Verify against the [Odoo 19 doc
 
 ## Cookbook Progress
 
-| Chapter | Topic | Status |
-|---|---|---|
-| 3 | Creating Odoo add-on modules | ✅ |
-| 4 | Application models | 🚧 |
-| 5 | Basic server-side development | ☐ |
-| 6 | Managing module data | ☐ |
-| 7 | Debugging modules | ☐ |
-| 8 | Advanced server-side development | ☐ |
-| 9 | Backend views | ☐ |
-| 10 | Security access | 🚧 |
-
-*(Adjust statuses to match where you actually are.)*
-
 ## Troubleshooting
 
 - **Module not showing in Apps**: check that `./custom_addons` is mounted at `/mnt/extra-addons`, `addons_path` includes it, then **Update Apps List** (dev mode on) and remove the "Apps" filter.
