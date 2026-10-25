@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Form View -->
+    <record id="library_member_form" model="ir.ui.view">
+        <field name="name">library.member.form</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="date_start" />
+                            <field name="date_end" />
+                            <field name="member_number" />
+                            <field name="date_of_birth" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="library_member_list" model="ir.ui.view">
+        <field name="name">library.member.list</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="partner_id" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="member_number" />
+                <field name="date_of_birth" />
+            </list>
+        </field>
+    </record>
+</odoo>

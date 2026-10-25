@@ -3,3 +3,5 @@ access_library_book_librarian,library.book,model_library_book,my_library.group_l
 access_library_book_user,library.book,model_library_book,my_library.group_library_user,1,0,0,0
 access_library_book_category_librarian,library.book.category,model_library_book_category,my_library.group_librarians,1,1,1,1
 access_library_book_category_user,library.book.category,model_library_book_category,my_library.group_library_user,1,0,0,0
+access_library_book_member_librarian,library.member,model_library_member,my_library.group_librarians,1,1,1,1
+access_library_book_member_user,library.member,model_library_member,my_library.group_library_user,1,0,0,0

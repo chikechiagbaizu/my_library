@@ -2,7 +2,7 @@
 
 <odoo>
     <record id="library_book_category_action" model="ir.actions.act_window">
-        <field name="name">Library Books Catgeory</field>
+        <field name="name">Library Book Categories</field>
         <field name="res_model">library.book.category</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="my_library.library_book_category_list" />

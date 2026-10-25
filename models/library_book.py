@@ -3,6 +3,7 @@ from odoo.exceptions import ValidationError
 
 class LibraryBook(models.Model):
     _name = 'library.book'
+    _inherit = ['base.archive','mail.thread']
     _description = 'Library Book'
     _order = 'date_released desc, name'
     _rec_name = 'short_name'
@@ -39,6 +40,8 @@ class LibraryBook(models.Model):
     retail_price = fields.Monetary(currency_field='currency_id', string='Retail Price')
     publisher_id = fields.Many2one(comodel_name='res.partner', string='Publisher', ondelete='set null')
     category_id = fields.Many2one(comodel_name='library.book.category', string='Category')
+    age_days = fields.Float(string='Days Since Release', compute='_compute_age')
+    publisher_city = fields.Char(string='Publisher City', related='publisher_id.city', readonly=True)
 
     @api.constrains('date_released')
     def _validate_release_date(self):
@@ -46,3 +49,13 @@ class LibraryBook(models.Model):
         for record in self:
             if record.date_released and record.date_released > today:
                     raise ValidationError(_("Error! Release date must be in the past."))
+    
+    @api.depends('date_released')
+    def _compute_age(self):
+        today = fields.Date.today()
+        for book in self:
+            if book.date_released:
+                delta = today - book.date_released
+                book.age_days = delta.days
+            else:
+                book.age_days = 0
