@@ -3,7 +3,7 @@
     'summary': 'Manage books easily',
     'author': 'Chike Chiagbaizu',
     'maintainer': 'Chike Chiagbaizu',
-    'sequence': 1,
+    'sequence': 10,
     'license': 'LGPL-3',
     'version': '19.0.1.0.0',
     'installable': True,

@@ -2,6 +2,7 @@ from odoo import fields, models
 
 class LibraryMember(models.Model):
     _name = 'library.member'
+    _description = 'Library Members'
     _inherits = {'res.partner':'partner_id'}
 
     partner_id = fields.Many2one(comodel_name='res.partner', string='Member', ondelete='cascade', required=True)

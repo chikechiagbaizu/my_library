@@ -7,6 +7,16 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="make_available" string="Make Available" type="object"
+                        class="btn-primary" />
+                    <button name="make_borrowed" string="Make Borrowed" type="object"
+                        class="btn-primary" />
+                    <button name="make_lost" string="Make Lost" type="object" class="btn-danger" />
+                    <!-- <button name="get_average_cost" string="Get Average Cost" type="object"
+                        class="btn-secondary" />
+                    <field name="state" widget="statusbar" /> -->
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -29,6 +39,7 @@
                             <field name="currency_id" />
                         </group>
                         <group>
+                            <field name="manager_remarks" />
                             <field name="notes" />
                             <field name="description" />
                         </group>
@@ -43,10 +54,12 @@
         <field name="name">library.book.list</field>
         <field name="model">library.book</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-danger="state == 'lost'">
                 <field name="name" />
                 <field name="date_released" />
                 <field name="author_ids" widget="many2many_tags" />
+                <field name="publisher_id" />
+                <field name="state" />
             </list>
         </field>
     </record>

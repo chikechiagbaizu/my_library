@@ -7,11 +7,16 @@
         <field name="model">library.book.category</field>
         <field name="arch" type="xml">
             <form>
+                <!-- <header>
+                    <button name="create_categories" string="Create Categories" type="object"
+                        class="btn-primary" />
+                </header> -->
                 <sheet>
                     <group>
                         <group>
                             <field name="name" />
                             <field name="parent_id" />
+                            <field name="description" />
                         </group>
                     </group>
                 </sheet>
@@ -27,6 +32,7 @@
             <list>
                 <field name="name" />
                 <field name="parent_id" />
+                <field name="description" />
             </list>
         </field>
     </record>
