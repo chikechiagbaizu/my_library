@@ -22,30 +22,45 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" />
-                            <field name="author_ids" widget="many2many_tags" />
-                            <field name="publisher_id" />
-                            <field name="publisher_city" />
-                            <field name="category_id" />
-                            <field name="state" />
-                            <field name="pages" />
-                        </group>
-                        <group>
-                            <field name="short_name" />
-                            <field name="date_released" />
-                            <field name="date_updated" />
                             <field name="cover" widget="image" class="oe_avatar" />
-                            <field name="reader_rating" />
-                            <field name="cost_price" />
-                            <field name="retail_price" />
-                            <field name="currency_id" />
-                        </group>
-                        <group>
-                            <field name="manager_remarks" />
-                            <field name="notes" />
-                            <field name="description" />
+                            <field name="name" />
+                            <field name="short_name" />
+                            <widget name="web_ribbon" title="Out of Print" bg_color="bg-danger"
+                                invisible="out_of_print == False" />
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Book Info">
+                            <group string="About the Book" name="about_book">
+                                <field name="author_ids" widget="many2many_tags" />
+                                <field name="category_id" />
+                                <field name="date_released" />
+                                <field name="pages" />
+                            </group>
+                            <group string="Publication" name="publication">
+                                <field name="publisher_id" />
+                                <field name="publisher_city" />
+                                <field name="out_of_print" />
+                                <field name="description" />
+                                <field name="reader_rating" />
+                            </group>
+                        </page>
+                        <page string="Library Management" groups="my_library.group_librarians">
+                            <group string="Cost and Pricing" name="cost_pricing">
+                                <field name="currency_id" />
+                                <field name="cost_price" />
+                                <field name="retail_price" />
+                            </group>
+                            <group string="Internal" name="internal">
+                                <field name="notes" />
+                                <field name="manager_remarks" />
+                            </group>
+                            <group string="Tracking" name="tracking">
+                                <field name="date_updated" />
+                                <field name="age_days" />
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
