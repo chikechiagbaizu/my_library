@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="action_library_rent_wizard" model="ir.actions.act_window">
+        <field name="name">Multi Books Rent</field>
+        <field name="res_model">library.rent.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

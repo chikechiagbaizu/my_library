@@ -6,7 +6,7 @@
         <field name="name">library.member.form</field>
         <field name="model">library.member</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Library members">
                 <sheet>
                     <group>
                         <group>

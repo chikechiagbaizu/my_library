@@ -2,6 +2,7 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError
 from odoo.tools.translate import _
 import logging
+
 _logger = logging.getLogger(__name__)
 
 class LibraryBook(models.Model):
@@ -86,13 +87,18 @@ class LibraryBook(models.Model):
                 raise UserError(msg)
     
     def make_available(self):
+        self.ensure_one()
         self.change_state('available')
 
     def make_borrowed(self):
+        self.ensure_one()
         self.change_state('borrowed')
 
     def make_lost(self):
-        self.change_state('lost')
+        self.ensure_one()
+        self.state = 'lost'
+        if not self.env.context.get('avoid_deactivate'):
+            self.active = False
     
     def log_all_library_members(self):
         library_member_model = self.env['library.member']
@@ -124,3 +130,28 @@ class LibraryBook(models.Model):
             groupby = ['category_id']
             )
         return grouped_result
+    
+    def book_rent(self):
+        self.ensure_one()
+        if self.state != 'available':
+            raise UserError(_('Book is not available for renting'))
+        rent_as_superuser = self.env['library.book.rent'].sudo()
+        rent_as_superuser.create({
+            'book_id': self.id,
+            'borrower_id': self.env.user.partner_id.id,
+        })
+    
+    def average_book_occupation(self):
+            self.env['library.book.rent'].flush_model()
+            sql_query = """
+                SELECT 
+                    lb.name,
+                    AVG((EXTRACT(epoch from age(return_date,rent_date))/86400))::int
+                FROM library_book_rent AS lbr
+                JOIN library_book as lb ON lb.id = lbr.book_id
+                WHERE lbr.state = 'returned'
+                GROUP BY lb.name;
+                """
+            self.env.cr.execute(sql_query)
+            result = self.env.cr.fetchall()
+            _logger.info('Average book occupation: %s', result)

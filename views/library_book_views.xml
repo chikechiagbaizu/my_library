@@ -6,16 +6,18 @@
         <field name="name">library.book.form</field>
         <field name="model">library.book</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Library books">
                 <header>
                     <button name="make_available" string="Make Available" type="object"
                         class="btn-primary" />
                     <button name="make_borrowed" string="Make Borrowed" type="object"
                         class="btn-primary" />
                     <button name="make_lost" string="Make Lost" type="object" class="btn-danger" />
-                    <!-- <button name="get_average_cost" string="Get Average Cost" type="object"
-                        class="btn-secondary" />
-                    <field name="state" widget="statusbar" /> -->
+                    <button name="book_rent" string="Rent this book" type="object"
+                        class="btn-primary" />
+                    <button name="average_book_occupation" string="Log Average Occ." type="object"
+                        class="btn-primary" />
+                    <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
                     <group>

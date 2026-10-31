@@ -11,4 +11,10 @@
     <menuitem id="libary_member_menu" name="Members" sequence="30"
         parent="libary_root_menu"
         action="my_library.library_member_action" />
+    <menuitem id="libary_book_rent_menu" name="Single Book Rent" sequence="40"
+        parent="libary_root_menu"
+        action="my_library.library_book_rent_action" />
+    <menuitem id="libary_rent_wizard_menu" sequence="50" name="Multi Books Rent"
+        parent="libary_root_menu"
+        action="my_library.action_library_rent_wizard" />
 </odoo>
